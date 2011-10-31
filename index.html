@@ -10,8 +10,13 @@
 	<script src="public/underscore.js" type="text/javascript" charset="utf-8"></script>
 	<script src="public/backbone.js" type="text/javascript" charset="utf-8"></script>
 	<script src="public/recipes.js" type="text/javascript" charset="utf-8"></script>
+	<script id='recipeTemplate' type='text/template'>
+	      <li class='recipe'><%= name %></li>
+	</script>
 </head>
 <body>
 	<div id='container'>
+      <ul id='recipeList'></ul>
+    </div>
 </body>
 </html>
