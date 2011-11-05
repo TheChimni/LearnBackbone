@@ -1,7 +1,7 @@
 window.Recipe = Backbone.Model.extend({});
 
 window.RecipeView = Backbone.View.extend({
-	//el: $('#recipeList')[0],
+	el: '#recipeList',
 	//tagName: 'li',
 	//className: 'recipe',
 	initialize: function() {
@@ -15,4 +15,10 @@ window.RecipeView = Backbone.View.extend({
 		$(this.el).html(renderedContent);
 		return this;
 	}
+});
+
+$(function(){
+	var recipe = new Recipe({name:'Shepu chi Bhaji', chef:'Rieethaa'});
+	var recipeView = new RecipeView({model:recipe});
+	recipeView.render();
 });
