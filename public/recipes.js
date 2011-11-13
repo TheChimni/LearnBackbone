@@ -49,11 +49,5 @@ $(function(){
 	
 	var recipes =  new Recipes();
 	var recipeListView = new RecipeListView({collection: recipes});
-	recipes.reset([recipe, recipeAnother]);
-	// recipes.each(function(r){
-	// 	var recipeView = new RecipeSummaryView({model: r});
-	// 	recipeView.render();
-	// 	$('#recipeList').append(recipeView.el);	
-	// });
-	
+	recipes.reset([recipe, recipeAnother]);	
 });
