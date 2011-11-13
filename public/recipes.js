@@ -1,5 +1,6 @@
 window.Recipe = Backbone.Model.extend({});
 
+// RecipeSummaryView is a constructor function hence R n capital
 window.RecipeSummaryView = Backbone.View.extend({
 	//el: '#recipeList',
 	tagName: 'li',
@@ -17,14 +18,23 @@ window.RecipeSummaryView = Backbone.View.extend({
 	}		
 });
 
+
+window.Recipes = Backbone.Collection.extend({
+	model : Recipe
+});
+
+
 $(function(){
+	
 	var recipe = new Recipe({name:'Shepu chi Bhaji', chef:'Rieethaa'});
-	var recipeView = new RecipeSummaryView({model:recipe});
-	recipeView.render();
-	$('#recipeList').append(recipeView.el);
 	
 	var recipeAnother = new Recipe({name:'Bangan Ka Bharta', chef:'Stevey'});
-	var recipeAnotherView = new RecipeSummaryView({model:recipeAnother});
-	recipeAnotherView.render();
-	$('#recipeList').append(recipeAnotherView.el); 
+	
+	var recipes =  new Recipes([recipe, recipeAnother]);
+	recipes.each(function(r){
+		var recipeView = new RecipeSummaryView({model: r});
+		recipeView.render();
+		$('#recipeList').append(recipeView.el);	
+	});
+	
 });
