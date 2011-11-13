@@ -1,6 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -11,7 +9,8 @@
 	<script src="public/backbone.js" type="text/javascript" charset="utf-8"></script>
 	<script src="public/recipes.js" type="text/javascript" charset="utf-8"></script>
 	<script id='recipeSummaryTemplate' type='text/template'>
-	      <%= name %> by <%= chef %>
+		<div class='summary'><%= name %> by <%= chef %></div>
+		<div class='details'></div>
 	</script>
 </head>
 <body>

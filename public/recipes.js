@@ -5,8 +5,11 @@ window.RecipeSummaryView = Backbone.View.extend({
 	//el: '#recipeList',
 	tagName: 'li',
 	className: 'recipe',
+	events: {
+		'click .summary': 'toggleDetails'
+	},
 	initialize: function() {
-		_.bindAll(this, 'render');
+		_.bindAll(this, 'render', 'toggleDetails');
 		this.model.bind('change', this.render);
 		this.template = _.template($('#recipeSummaryTemplate').html());
 	},
@@ -15,7 +18,11 @@ window.RecipeSummaryView = Backbone.View.extend({
 		var renderedContent = this.template(this.model.toJSON());
 		$(this.el).html(renderedContent);
 		return this;
-	}		
+	},
+	
+	toggleDetails: function(){		
+		console.log('toggle on');
+	}
 });
 
 
