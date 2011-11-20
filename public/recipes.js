@@ -24,8 +24,17 @@ window.RecipeSummaryView = Backbone.View.extend({
 		// we need to tell the view which element it maps to using a scoped selector because in the whole
 		// document there will be more than 1 'details' divs. Hence we need to pass el as a parameter to the 
 		// constructor function 
-		this.detailsView = new RecipeDetailView({el: this.$('.details')[0], model: this.model});
-		this.detailsView.render();
+		
+		console.log(this.detailsView);
+	    //if (this.detailsView === undefined) {
+		if (!this.detailsView) {
+			this.detailsView = new RecipeDetailView({el: this.$('.details')[0], model: this.model});
+			this.detailsView.render();
+		} else if (!this.detailsView.isVisible()) {
+			this.detailsView.show();
+		} else {
+			this.detailsView.hide();
+		}
 	}
 });
 
@@ -42,6 +51,20 @@ window.RecipeDetailView = Backbone.View.extend({
 		var renderedContent =  this.template(this.model.toJSON());
 		$(this.el).html(renderedContent);
 		return this;
+	},
+	
+	hide: function(){
+		$(this.el).hide();
+		return this;
+	},
+	
+	show: function(){
+		$(this.el).show();
+		return this;
+	},
+	
+	isVisible: function(){
+		return $(this.el).is(':visible');
 	}
 })
 
