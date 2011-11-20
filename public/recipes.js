@@ -29,16 +29,8 @@ window.RecipeSummaryView = Backbone.View.extend({
 			this.detailsView = new RecipeDetailView({el: this.$('.details')[0], model: this.model});
 			this.detailsView.render();
 		} else {
-			$(this.detailsView.el).slideToggle(400, function(){
-				// add some animation here
-			});
+			this.detailsView.toggle();
 		}
-		
-		//  if (!this.detailsView.isVisible()) {
-		// 	this.detailsView.show();
-		// } else {
-		// 	this.detailsView.hide();
-		// }
 	}
 });
 
@@ -57,21 +49,10 @@ window.RecipeDetailView = Backbone.View.extend({
 		return this;
 	},
 	
-	// redundant to be deleted
-	hide: function(){
-		$(this.el).hide();
-		return this;
-	},
-	
-	// redundant to be deleted
-	show: function(){
-		$(this.el).show();
-		return this;
-	},
-	
-	//redundant - to be deleted
-	isVisible: function(){
-		return $(this.el).is(':visible');
+	toggle: function(){
+		$(this.el).slideToggle(400, function(){
+			//add animation here
+		});
 	}
 });
 
@@ -99,9 +80,9 @@ window.RecipeListView = Backbone.View.extend({
 
 $(function(){
 	
-	var recipe = new Recipe({name:'Shepu chi Bhaji', chef:'Rieethaa', ingredients: 'Dill, garlic, green chillies', steps: 'secret'});
+	var recipe = new Recipe({name:'Shepu chi Bhaji', chef:'Rieethaa', ingredients: 'Dill, garlic, green chillies', steps: '1) Take the fresh dill and start picking it including leaves and stalks into a clean bowl without washing it. 2) Coarsly chop the sorted dill on a chopping board in a random manner. 3) Now, pour some tap water into the bowl containing chopped dill. 4) Run your fingers into the bowl containing water such that grit seperates from the dill into the water. 5) Next step is a secret. Bribe me :)'});
 	
-	var recipeAnother = new Recipe({name:'Baingan Ka Bharta', chef:'Stevey', ingredients: 'garlic with kernels removed', steps: 'secret'});
+	var recipeAnother = new Recipe({name:'Baingan Ka Bharta', chef:'Stevey', ingredients: 'garlic with kernels removed', steps: 'This is definitely a secret. Will see if I should share!'});
 	
 	var recipes =  new Recipes();
 	var recipeListView = new RecipeListView({collection: recipes});
