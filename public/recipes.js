@@ -29,7 +29,7 @@ window.RecipeSummaryView = Backbone.View.extend({
 			this.detailsView = new RecipeDetailView({el: this.$('.details')[0], model: this.model});
 			this.detailsView.render();
 		} else {
-			$(this.detailsView.el).toggle(300, function(){
+			$(this.detailsView.el).slideToggle(400, function(){
 				// add some animation here
 			});
 		}
