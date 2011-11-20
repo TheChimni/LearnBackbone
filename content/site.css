@@ -1,0 +1,8 @@
+html {
+	background-color: #FFF;
+	font-family: Segoe UI, Arial, Verdana;
+}
+
+div.details {
+	display: none;	
+}
