@@ -15,9 +15,17 @@
 	</script>
 	<script id='recipeDetailTemplate' type='text/template'>
 		<div class='ingredients'>
-			<%= ingredients %>
+			<span class="subtitle"> Ingredients </span>
+			<ul>
+				<%_.each(ingredients, function(ingredient){ %>
+					<li>
+					<%= ingredient %>
+					</li>
+				<%});%>
+			</ul>
 		</div>
 		<div class='steps'>
+			<span class="subtitle"> Instructions </span>
 			<%= steps %>
 		</div>
 		<a class='editLink'>Edit</a>
