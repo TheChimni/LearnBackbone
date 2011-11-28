@@ -79,13 +79,28 @@ window.RecipeListView = Backbone.View.extend({
 	}
 });
 
+window.Router = Backbone.Router.extend({
+	routes: {
+		"recipe/:id": "showRecipe"
+	},
+	
+	showRecipe: function(id){
+		console.log("steve is an asshole!", id);
+	}
+});
+
 $(function(){
 	
-	var recipe = new Recipe({name:'Shepu chi Bhaji', chef:'Rieethaa', ingredients: ['Dill', 'garlic', 'green chillies'] , steps: '1) Take the fresh dill and start picking it including leaves and stalks into a clean bowl without washing it. 2) Coarsly chop the sorted dill on a chopping board in a random manner. 3) Now, pour some tap water into the bowl containing chopped dill. 4) Run your fingers into the bowl containing water such that grit seperates from the dill into the water. 5) Next step is a secret. Bribe me :)'});
+	var recipe = new Recipe({id: 1, name:'Shepu chi Bhaji', chef:'Rieethaa', ingredients: ['Dill', 'garlic', 'green chillies'] , steps: '1) Take the fresh dill and start picking it including leaves and stalks into a clean bowl without washing it. 2) Coarsly chop the sorted dill on a chopping board in a random manner. 3) Now, pour some tap water into the bowl containing chopped dill. 4) Run your fingers into the bowl containing water such that grit seperates from the dill into the water. 5) Next step is a secret. Bribe me :)'});
 	
-	var recipeAnother = new Recipe({name:'Baingan Ka Bharta', chef:'Stevey', ingredients: ['garlic with kernels removed'], steps: 'This is definitely a secret. Will see if I should share!'});
+	var recipeAnother = new Recipe({id: 2, name:'Baingan Ka Bharta', chef:'Stevey', ingredients: ['garlic with kernels removed'], steps: 'This is definitely a secret. Will see if I should share!'});
 	
 	var recipes =  new Recipes();
 	var recipeListView = new RecipeListView({collection: recipes});
 	recipes.reset([recipe, recipeAnother]);
+	
+	if (!window.router) {
+		window.router = new Router();
+		Backbone.history.start();
+	}
 });
