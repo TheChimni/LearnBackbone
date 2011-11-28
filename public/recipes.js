@@ -1,4 +1,8 @@
-window.Recipe = Backbone.Model.extend({});
+window.Recipe = Backbone.Model.extend({
+	url: function(){
+		return 'recipe/' + this.get('id');
+	}
+});
 
 // RecipeSummaryView is a constructor function hence R n capital
 window.RecipeSummaryView = Backbone.View.extend({
@@ -24,10 +28,13 @@ window.RecipeSummaryView = Backbone.View.extend({
 		// we need to tell the view which element it maps to using a scoped selector because in the whole
 		// document there will be more than 1 'details' divs. Hence we need to pass el as a parameter to the 
 		// constructor function 
-		
+	
 		if (!this.detailsView) {
+			console.log("hi");
+			router.navigate(this.model.url());
 			this.detailsView = new RecipeDetailView({el: this.$('.details')[0], model: this.model});
 			this.detailsView.render();
+			this.detailsView.toggle();
 		} else {
 			this.detailsView.toggle();
 		}
@@ -84,7 +91,7 @@ window.Router = Backbone.Router.extend({
 		"recipe/:id": "showRecipe"
 	},
 	
-	showRecipe: function(id){
+	showRecipe: function(id) {
 		console.log("steve is an asshole!", id);
 	}
 });
