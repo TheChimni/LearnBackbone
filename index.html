@@ -19,20 +19,24 @@
 			<ul>
 				<%_.each(ingredients, function(ingredient){ %>
 					<li>
+					<p>
 					<%= ingredient %>
+					</p>
 					</li>
 				<%});%>
 			</ul>
 		</div>
 		<div class='steps'>
 			<span class='subtitle'> Instructions </span>
-			<ul>
+			<ol>
 				<%_.each(steps, function(step){ %>
 					<li>
+					<p>
 					<%= step %>
+					</p>
 					</li>
 				<%});%>
-			</ul>
+			</ol>
 		</div>
 		<a class='editLink'>Edit</a>
 	</script>

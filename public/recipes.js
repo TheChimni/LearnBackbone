@@ -38,6 +38,9 @@ window.RecipeSummaryView = Backbone.View.extend({
 		} else {
 			this.detailsView.toggle();
 		}
+		if (this.detailsView.isVisible()) {
+			// Store a reference somewhere?
+		}
 	}
 });
 
@@ -60,6 +63,10 @@ window.RecipeDetailView = Backbone.View.extend({
 		$(this.el).slideToggle(400, function(){
 			//add animation here
 		});
+	},
+	
+	isVisible: function() {
+		// TODO:
 	}
 });
 
@@ -92,15 +99,31 @@ window.Router = Backbone.Router.extend({
 	},
 	
 	showRecipe: function(id) {
-		console.log("steve is an asshole!", id);
+		console.log("Show me the recipe", id);
 	}
 });
 
 $(function(){
 	
-	var recipe = new Recipe({id: 1, name:'Shepu chi Bhaji', chef:'Rieethaa', ingredients: ['Dill', 'garlic', 'green chillies'] , steps: '1) Take the fresh dill and start picking it including leaves and stalks into a clean bowl without washing it. 2) Coarsly chop the sorted dill on a chopping board in a random manner. 3) Now, pour some tap water into the bowl containing chopped dill. 4) Run your fingers into the bowl containing water such that grit seperates from the dill into the water. 5) Next step is a secret. Bribe me :)'});
+	var recipe = new Recipe({
+		id: 1,
+		name:'Shepu chi Bhaji',
+		chef:'Rieethaa',
+		ingredients: ['Dill', 'garlic', 'green chillies'],
+		steps: ['Take the fresh dill and start picking it including leaves and stalks into a clean bowl without washing it.',
+		'Coarsly chop the sorted dill on a chopping board in a random manner.',
+		'Now, pour some tap water into the bowl containing chopped dill.',
+		'Run your fingers into the bowl containing water such that grit seperates from the dill into the water.',
+		'Next step is a secret. Bribe me :)']
+		});
 	
-	var recipeAnother = new Recipe({id: 2, name:'Baingan Ka Bharta', chef:'Stevey', ingredients: ['garlic with kernels removed'], steps: 'This is definitely a secret. Will see if I should share!'});
+	var recipeAnother = new Recipe({
+		id: 2,
+		name:'Baingan Ka Bharta',
+		chef:'Stevey',
+		ingredients: ['garlic with kernels removed'],
+		steps: ['This is definitely a secret. Will see if I should share!']
+		});
 	
 	var recipes =  new Recipes();
 	var recipeListView = new RecipeListView({collection: recipes});
