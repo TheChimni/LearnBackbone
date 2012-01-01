@@ -8,14 +8,14 @@
 	<script src="public/underscore.js" type="text/javascript" charset="utf-8"></script>
 	<script src="public/backbone.js" type="text/javascript" charset="utf-8"></script>
 	<script src="public/recipes.js" type="text/javascript" charset="utf-8"></script>
-	<link rel="stylesheet" href="content/site.css" type="text/css" media="screen" title="no title" 		charset="utf-8">
+	<link rel="stylesheet" href="content/site.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	<script id='recipeSummaryTemplate' type='text/template'>
 		<div class='summary'><%= name %> by <%= chef %></div>
 		<div class='details'></div>
 	</script>
 	<script id='recipeDetailTemplate' type='text/template'>
 		<div class='ingredients'>
-			<span class="subtitle"> Ingredients </span>
+			<span class='subtitle'> Ingredients </span>
 			<ul>
 				<%_.each(ingredients, function(ingredient){ %>
 					<li>
@@ -25,8 +25,14 @@
 			</ul>
 		</div>
 		<div class='steps'>
-			<span class="subtitle"> Instructions </span>
-			<%= steps %>
+			<span class='subtitle'> Instructions </span>
+			<ul>
+				<%_.each(steps, function(step){ %>
+					<li>
+					<%= step %>
+					</li>
+				<%});%>
+			</ul>
 		</div>
 		<a class='editLink'>Edit</a>
 	</script>
